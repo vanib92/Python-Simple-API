@@ -13,6 +13,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///apidb.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
 
+db.create_all()
 db = SQLAlchemy(app)
 
 class User(db.Model):
@@ -227,4 +228,4 @@ def delete_note(current_user, note_id):
     return jsonify({'message' : 'Note has been deleted!'})
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=8080, debug=True)
+    app.run(debug=True)
